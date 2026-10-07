@@ -1,0 +1,26 @@
+# itsmp4 – Videograf Luzern
+User-agent: *
+Allow: /
+Disallow: /tools/
+Disallow: /videos/
+Disallow: /livio.html
+Disallow: /livio_files/
+Disallow: /projekt.html
+
+# KI-Suchmaschinen (ChatGPT, Claude, Perplexity, Google Gemini) dürfen die Seite lesen
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Claude-SearchBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://itsmp4.ch/sitemap.xml

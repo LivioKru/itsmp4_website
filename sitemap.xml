@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://itsmp4.ch/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/videograf-luzern.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/referenzen.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/ueber-mich.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/kontakt.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/eventvideo-luzern.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/imagefilm-luzern.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/social-media-video-luzern.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/musikvideo-luzern.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/projekte/orofanie.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://itsmp4.ch/assets/img/orofanie.jpg</image:loc></image:image>
+    <video:video>
+      <video:thumbnail_loc>https://itsmp4.ch/assets/img/orofanie.jpg</video:thumbnail_loc>
+      <video:title>Orofanie – itsmp4</video:title>
+      <video:description>Fashion Show auf einem Schiff. Ich habe die Show mit zwei Kameras begleitet, direkt am Laufsteg und zwischen den Gästen. Daraus ist ein kurzer Eventfilm entstanden, der den Abend in unter einer Minute zeigt.</video:description>
+      <video:content_loc>https://itsmp4.ch/assets/video/orofanie.mp4</video:content_loc>
+      <video:duration>39</video:duration>
+      <video:publication_date>2026-08-22</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/projekte/timeless-tunes.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://itsmp4.ch/assets/img/timeless-tunes.jpg</image:loc></image:image>
+    <video:video>
+      <video:thumbnail_loc>https://itsmp4.ch/assets/img/timeless-tunes.jpg</video:thumbnail_loc>
+      <video:title>Timeless Tunes – itsmp4</video:title>
+      <video:description>DJs, Nebel und ein voller Dancefloor: Für Timeless Tunes habe ich ein Eventvideo im Hochformat gedreht, gemacht für Instagram und TikTok. Gefilmt mitten aus der Menge, nah an den DJs und am Publikum, und im Takt der Musik geschnitten. So wirkt der Clip auch auf dem Handy wie ein Abend, bei dem man dabei sein wollte.</video:description>
+      <video:content_loc>https://itsmp4.ch/assets/video/timeless-tunes.mp4</video:content_loc>
+      <video:duration>38</video:duration>
+      <video:publication_date>2026-09-26</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/projekte/mar-de-pins.html</loc>
+    <lastmod>2026-10-06</lastmod>
+    <priority>0.7</priority>
+    <image:image><image:loc>https://itsmp4.ch/assets/img/mar-de-pins.jpg</image:loc></image:image>
+    <video:video>
+      <video:thumbnail_loc>https://itsmp4.ch/assets/img/mar-de-pins.jpg</video:thumbnail_loc>
+      <video:title>Mar de Pins – itsmp4</video:title>
+      <video:description>Pinienwald, Felsen und Wellen an der Küste von Mallorca. Ein eigenes Projekt ohne Kunde und ohne Briefing, nur Kamera, Wetter und Meer. Gedreht an einem grauen Tag mit viel Wind. Genau das hat die Stimmung gemacht.</video:description>
+      <video:content_loc>https://itsmp4.ch/assets/video/mar-de-pins.mp4</video:content_loc>
+      <video:duration>13</video:duration>
+      <video:publication_date>2026-10-05</video:publication_date>
+    </video:video>
+  </url>
+</urlset>

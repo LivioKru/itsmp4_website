@@ -1,0 +1,16 @@
+# macOS
+.DS_Store
+
+# Rohmaterial – wird nicht online gebraucht
+videos/
+assets/video/FINAL.mp4
+assets/video/maison82.mov
+assets/video/song4.mp4
+
+# Gespeicherte fremde Webseite (nicht veröffentlichen)
+livio.html
+livio_files/
+
+# Originaldateien für Logo/Screenshot
+itsmp4.png
+startseite.jpg
