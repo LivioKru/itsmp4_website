@@ -1,4 +1,4 @@
-# itsmp4 – Videograf Luzern
+# itsmp4 – Filmportfolio von Livio Krummenacher
 User-agent: *
 Allow: /
 Disallow: /tools/

@@ -12,41 +12,24 @@
      <div class="grain" aria-hidden="true"></div>`
   );
 
-  /* ---------- Footer ---------- */
-  const foot = document.querySelector(".site-foot");
-  if (foot) {
-    // E-Mail mit einem Klick kopieren
-    const copyBtn = foot.querySelector("[data-copy]");
-    window.SITE_MAIL = copyBtn.dataset.copy;
-    copyBtn.addEventListener("click", async () => {
-      const hint = copyBtn.querySelector(".fm-hint");
+  /* ---------- E-Mail mit einem Klick kopieren (Footer & Kontakt) ---------- */
+  document.querySelectorAll("[data-copy]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const hint = btn.querySelector(".fm-hint");
       try {
-        await navigator.clipboard.writeText(copyBtn.dataset.copy);
+        await navigator.clipboard.writeText(btn.dataset.copy);
         hint.textContent = "Kopiert ✓";
       } catch {
-        location.href = "mailto:" + copyBtn.dataset.copy;
+        location.href = "mailto:" + btn.dataset.copy;
       }
       setTimeout(() => (hint.textContent = "Kopieren"), 1800);
     });
-    foot.querySelector("[data-top]").addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
-    // Uhrzeit in Luzern
-    const clock = foot.querySelector("[data-clock]");
-    const tick = () => (clock.textContent = new Date().toLocaleTimeString("de-CH", { timeZone: "Europe/Zurich", hour: "2-digit", minute: "2-digit" }));
-    tick();
-    setInterval(tick, 10000);
-    // Riesiger Schriftzug fährt hoch, wenn der Footer ins Bild kommt
-    new IntersectionObserver(([en]) => foot.classList.toggle("in", en.isIntersecting), { threshold: 0.35 }).observe(foot);
+  });
 
-    // Kontaktangaben aus dem Footer übernehmen (z.B. Visitenkarte auf der Kontaktseite)
-    const insta = foot.querySelector('a[href*="instagram.com"]');
-    document.querySelectorAll("[data-mail]").forEach((a) => {
-      a.href = "mailto:" + window.SITE_MAIL;
-      a.textContent = window.SITE_MAIL;
-    });
-    document.querySelectorAll("[data-instagram]").forEach((a) => {
-      a.href = insta.href;
-      a.textContent = insta.textContent;
-    });
+  /* ---------- Footer ---------- */
+  const foot = document.querySelector(".site-foot");
+  if (foot) {
+    foot.querySelector("[data-top]").addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
   }
 
   /* ---------- Mobile-Menü ---------- */
@@ -54,7 +37,7 @@
   menuBtn.addEventListener("click", () => {
     const open = document.body.classList.toggle("menu-open");
     menuBtn.setAttribute("aria-expanded", open);
-    menuBtn.textContent = open ? "Schliessen" : "Menü";
+    menuBtn.textContent = open ? "Close" : "Menu";
   });
 
   /* ---------- Seitenübergang ---------- */
