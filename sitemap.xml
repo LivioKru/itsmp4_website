@@ -21,7 +21,7 @@
     <image:image><image:loc>https://itsmp4.ch/assets/img/orofanie.jpg</image:loc></image:image>
     <video:video>
       <video:thumbnail_loc>https://itsmp4.ch/assets/img/orofanie.jpg</video:thumbnail_loc>
-      <video:title>Orofanie – Eventfilm von Livio Krummenacher</video:title>
+      <video:title>Orofani – Eventfilm von Livio Krummenacher</video:title>
       <video:description>Fashion Show auf einem Schiff. Fashion Show auf einem Schiff. Ich habe die Show mit zwei Kameras begleitet, direkt am Laufsteg und zwischen den Gästen. Daraus ist ein kurzer Eventfilm entstanden, der den Abend in unter einer Minute zeigt.</video:description>
       <video:content_loc>https://itsmp4.ch/assets/video/orofanie.mp4</video:content_loc>
       <video:duration>39</video:duration>
@@ -57,8 +57,8 @@
     <image:image><image:loc>https://itsmp4.ch/assets/img/maison82-collective.jpg</image:loc></image:image>
     <video:video>
       <video:thumbnail_loc>https://itsmp4.ch/assets/img/maison82-collective.jpg</video:thumbnail_loc>
-      <video:title>Maison 82 Collective – Film von Livio Krummenacher</video:title>
-      <video:description>DJ-Session zwischen weissen Wänden. Ein DJ-Set von Maison 82 Collective in einem leeren Galerieraum, zwischen Holzkisten und weissen Wänden. Gefilmt mit mehreren Kameras und mit eigenem Ton aufgenommen.</video:description>
+      <video:title>Cator – Film von Livio Krummenacher</video:title>
+      <video:description>DJ-Session zwischen weissen Wänden. Ein DJ-Set von Cator in einem leeren Galerieraum, zwischen Holzkisten und weissen Wänden. Gefilmt mit mehreren Kameras und mit eigenem Ton aufgenommen.</video:description>
       <video:content_loc>https://itsmp4.ch/assets/video/maison82-collective.mp4</video:content_loc>
       <video:duration>23</video:duration>
       <video:publication_date>2026-07-02</video:publication_date>
