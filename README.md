@@ -67,7 +67,6 @@ avconvert -s input.mov -o assets/video/name.mp4 -p Preset1920x1080
 - **Domain, E-Mail, Instagram, Ort**: oben in `tools/build.mjs` (`SITE`)
 - **Seitentitel & Beschreibungen**: `PAGES` in `tools/build.mjs`
 - **Texte**: direkt in den HTML-Dateien
-- **Foto von dir**: `assets/img/portrait.jpg`
 - **Farben/Schriften**: oben in `assets/css/style.css` (`:root`)
 
 ## Vor dem Hochladen

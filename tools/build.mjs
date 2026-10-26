@@ -96,7 +96,6 @@ const PAGES = [
     title: "Über mich – Livio Krummenacher, Videograf aus Luzern | itsmp4",
     description:
       "Livio Krummenacher, Videograf aus Luzern. Kamera, Schnitt und Farbe macht er selbst.",
-    image: "assets/img/portrait.jpg",
   },
   {
     file: "kontakt.html",
@@ -179,7 +178,7 @@ const person = {
   jobTitle: SITE.jobTitle,
   description:
     "Videograf aus Luzern. Events, Musik und eigene Projekte.",
-  image: abs("assets/img/portrait.jpg"),
+  image: abs("assets/img/og-image.jpg"),
   url: pageUrl("/ueber-mich"),
   email: SITE.mail,
   homeLocation: { "@type": "Place", name: "Luzern, Schweiz" },
