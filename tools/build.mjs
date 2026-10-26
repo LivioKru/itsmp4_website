@@ -50,12 +50,18 @@ const SITE = {
    Server-Weiterleitungen, deshalb Meta-Refresh + Canonical.)
    -------------------------------------------------------------------------- */
 const REDIRECTS = {
-  "videograf-luzern.html": "ueber-mich.html",
-  "eventvideo-luzern.html": "referenzen.html",
-  "imagefilm-luzern.html": "referenzen.html",
-  "social-media-video-luzern.html": "referenzen.html",
-  "musikvideo-luzern.html": "referenzen.html",
+  "videograf-luzern.html": "ueber-mich",
+  "eventvideo-luzern.html": "referenzen",
+  "imagefilm-luzern.html": "referenzen",
+  "social-media-video-luzern.html": "referenzen",
+  "musikvideo-luzern.html": "referenzen",
 };
+
+/* --------------------------------------------------------------------------
+   Adressen ohne «.html»: Die Dateien heissen weiter z.B. referenzen.html,
+   GitHub Pages liefert sie aber auch unter /referenzen aus. Alle Links,
+   Canonicals und die Sitemap nutzen deshalb die kurze Adresse.
+   -------------------------------------------------------------------------- */
 
 /* --------------------------------------------------------------------------
    Seiten (handgeschriebene HTML-Dateien)
@@ -73,7 +79,7 @@ const PAGES = [
   },
   {
     file: "referenzen.html",
-    url: "/referenzen.html",
+    url: "/referenzen",
     key: "work",
     type: "CollectionPage",
     crumb: "Selected Work",
@@ -83,7 +89,7 @@ const PAGES = [
   },
   {
     file: "ueber-mich.html",
-    url: "/ueber-mich.html",
+    url: "/ueber-mich",
     key: "about",
     type: "ProfilePage",
     crumb: "Über mich",
@@ -94,7 +100,7 @@ const PAGES = [
   },
   {
     file: "kontakt.html",
-    url: "/kontakt.html",
+    url: "/kontakt",
     key: "contact",
     type: "ContactPage",
     crumb: "Kontakt",
@@ -115,9 +121,9 @@ const PAGES = [
 ];
 
 const NAV = [
-  ["referenzen.html", "Work", "work"],
-  ["ueber-mich.html", "About", "about"],
-  ["kontakt.html", "Contact", "contact"],
+  ["referenzen", "Work", "work"],
+  ["ueber-mich", "About", "about"],
+  ["kontakt", "Contact", "contact"],
 ];
 
 /* --------------------------------------------------------------------------
@@ -148,7 +154,7 @@ vm.runInNewContext(read("assets/js/projects.js"), ctx);
 const PROJECTS = ctx.window.PROJECTS;
 const REAL = PROJECTS.filter((p) => !p.placeholder);
 // Filme haben keine eigene Seite mehr – sie öffnen sich auf der Work-Seite
-const projectUrl = (p) => `/referenzen.html#${p.slug}`;
+const projectUrl = (p) => `/referenzen#${p.slug}`;
 // «Eventfilm», sonst einfach «Film»
 const kindOf = (p) => (p.category === "Event" ? "Eventfilm" : "Film");
 // "2026-08-22" -> "August 2026"
@@ -174,7 +180,7 @@ const person = {
   description:
     "Videograf aus Luzern. Events, Musik und eigene Projekte.",
   image: abs("assets/img/portrait.jpg"),
-  url: pageUrl("/ueber-mich.html"),
+  url: pageUrl("/ueber-mich"),
   email: SITE.mail,
   homeLocation: { "@type": "Place", name: "Luzern, Schweiz" },
   knowsLanguage: ["de", "de-CH"],
@@ -278,7 +284,7 @@ function head(page, pre, extraLd = []) {
 }
 
 function header(key, pre) {
-  const home = `${pre}index.html`; // direkt auf die Datei, funktioniert auch ohne Webserver
+  const home = pre || "./"; // Startseite ohne «index.html» in der Adresse
   const link = ([href, label, k]) =>
     `<a href="${pre}${href}"${k === key ? ' aria-current="page"' : ""}><span class="roll" data-text="${label}">${label}</span></a>`;
   return `  <header class="site-header">
@@ -327,7 +333,7 @@ ${NAV.map(([href, label]) => `          <a href="${pre}${href}">${label}</a>`).j
     </div>
     <div class="foot-legal">
       <span>© ${new Date().getFullYear()} ${SITE.name} · ${SITE.person}</span>
-      <span><a href="${pre}impressum.html">Impressum</a> · <a href="${pre}datenschutz.html">Datenschutz</a></span>
+      <span><a href="${pre}impressum">Impressum</a> · <a href="${pre}datenschutz">Datenschutz</a></span>
     </div>
   </footer>`;
 }
@@ -412,7 +418,7 @@ const LEGAL = {
 };
 
 function legalPage(kind) {
-  const url = `/${kind}.html`;
+  const url = `/${kind}`;
   const isImp = kind === "impressum";
   const page = {
     url,
@@ -460,7 +466,9 @@ function legalPage(kind) {
 
 // 1) Alte Projektseiten öffnen den Film direkt auf der Work-Seite
 fs.rmSync(path.join(ROOT, "projekte"), { recursive: true, force: true });
-PROJECTS.forEach((p) => write(`projekte/${p.slug}.html`, redirectPage(`../referenzen.html#${p.slug}`, "/referenzen.html")));
+PROJECTS.forEach((p) => write(`projekte/${p.slug}.html`, redirectPage(`../referenzen#${p.slug}`, "/referenzen")));
+// /projekte und /projekte/ (Ordner ohne eigene Seite) -> Work
+write("projekte/index.html", redirectPage("../referenzen", "/referenzen"));
 
 // Weiterleitungen, Impressum, Datenschutz
 Object.entries(REDIRECTS).forEach(([from, to]) => write(from, redirectPage(to)));
@@ -580,9 +588,9 @@ write(
 
 ## Seiten
 - [Startseite](${SITE.url}/)
-- [Selected Work](${pageUrl("/referenzen.html")})
-- [Über mich – ${SITE.person}](${pageUrl("/ueber-mich.html")})
-- [Kontakt](${pageUrl("/kontakt.html")})
+- [Selected Work](${pageUrl("/referenzen")})
+- [Über mich – ${SITE.person}](${pageUrl("/ueber-mich")})
+- [Kontakt](${pageUrl("/kontakt")})
 
 ## Selected Work
 ${REAL.map((p) => `- [${p.title}](${pageUrl(projectUrl(p))}): ${p.category}, ${monthYear(p.date)}${p.location ? `, ${p.location}` : ""}. ${p.subtitle}`).join("\n")}

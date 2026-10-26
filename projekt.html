@@ -7,10 +7,10 @@
   <!-- Alte Adressen (projekt.html?p=…) leiten auf die neuen Projektseiten weiter -->
   <script>
     const slug = new URLSearchParams(location.search).get("p");
-    location.replace("referenzen.html" + (slug ? "#" + encodeURIComponent(slug) : ""));
+    location.replace("referenzen" + (slug ? "#" + encodeURIComponent(slug) : ""));
   </script>
 </head>
 <body>
-  <p><a href="referenzen.html">Zu Selected Work</a></p>
+  <p><a href="referenzen">Zu Selected Work</a></p>
 </body>
 </html>

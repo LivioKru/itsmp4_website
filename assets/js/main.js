@@ -32,6 +32,16 @@
     foot.querySelector("[data-top]").addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
   }
 
+  /* ---------- Adressen ohne «.html» ---------- */
+  // Alte Adressen (z.B. /referenzen.html) funktionieren weiter, in der Adresszeile steht aber die kurze Form
+  if (location.protocol !== "file:" && /\.html$/.test(location.pathname)) {
+    history.replaceState(null, "", location.pathname.replace(/(index)?\.html$/, "") + location.search + location.hash);
+  }
+  // Fehlerseite: Adresse mit Schrägstrich am Ende (z.B. /referenzen/) -> /referenzen
+  if (document.body.dataset.page === "404" && /.\/$/.test(location.pathname)) {
+    location.replace(location.pathname.replace(/\/+$/, "") + location.search + location.hash);
+  }
+
   /* ---------- Startseite: Hintergrundvideo sicher starten ---------- */
   // Manche Handys blockieren Autoplay beim Laden – dann stumm anstossen
   // und spätestens bei der ersten Berührung nochmals versuchen.

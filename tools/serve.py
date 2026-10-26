@@ -18,6 +18,27 @@ PORT = 8642
 
 
 class RangeHandler(SimpleHTTPRequestHandler):
+    def translate_path(self, path):
+        # Wie GitHub Pages: /referenzen liefert referenzen.html
+        p = super().translate_path(path)
+        if not os.path.exists(p) and os.path.isfile(p + ".html"):
+            return p + ".html"
+        return p
+
+    def send_error(self, code, message=None, explain=None):
+        # Wie GitHub Pages: unbekannte Adressen zeigen 404.html
+        page = os.path.join(ROOT, "404.html")
+        if code == 404 and os.path.isfile(page):
+            body = open(page, "rb").read()
+            self.send_response(404)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            if self.command != "HEAD":
+                self.wfile.write(body)
+            return
+        super().send_error(code, message, explain)
+
     def send_head(self):
         match = re.fullmatch(r"bytes=(\d*)-(\d*)", self.headers.get("Range", ""))
         path = self.translate_path(self.path)
