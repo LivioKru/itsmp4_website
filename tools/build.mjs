@@ -32,7 +32,7 @@ const SITE = {
   person: "Livio Krummenacher",
   firstName: "Livio",
   lastName: "Krummenacher",
-  jobTitle: "Filmemacher",
+  jobTitle: "Videograf",
   mail: "hello@itsmp4.ch",
   instagram: "https://www.instagram.com/itsmp4.ch/",
   instagramHandle: "@itsmp4.ch",
@@ -40,7 +40,7 @@ const SITE = {
   region: "LU",
   founded: "2026",
   description:
-    "itsmp4 ist das Portfolio von Livio Krummenacher, Filmemacher und Videograf aus Luzern. Events, Musik und eigene Projekte.",
+    "itsmp4 ist das Portfolio von Livio Krummenacher, Videograf aus Luzern. Events, Musik und eigene Projekte.",
 };
 
 /* --------------------------------------------------------------------------
@@ -66,9 +66,9 @@ const PAGES = [
     url: "/",
     key: "home",
     type: "WebPage",
-    title: "itsmp4 – Livio Krummenacher, Filmemacher & Videograf aus Luzern",
+    title: "itsmp4 – Livio Krummenacher, Videograf aus Luzern",
     description:
-      "Filme von Livio Krummenacher, Filmemacher und Videograf aus Luzern. Events, Musik und eigene Projekte.",
+      "Filme von Livio Krummenacher, Videograf aus Luzern. Events, Musik und eigene Projekte.",
     preload: "assets/img/startseite-reel.jpg",
   },
   {
@@ -87,9 +87,9 @@ const PAGES = [
     key: "about",
     type: "ProfilePage",
     crumb: "Über mich",
-    title: "Über mich – Livio Krummenacher, Filmemacher aus Luzern | itsmp4",
+    title: "Über mich – Livio Krummenacher, Videograf aus Luzern | itsmp4",
     description:
-      "Livio Krummenacher, Filmemacher und Videograf aus Luzern. Kamera, Schnitt und Farbe macht er selbst.",
+      "Livio Krummenacher, Videograf aus Luzern. Kamera, Schnitt und Farbe macht er selbst.",
     image: "assets/img/portrait.jpg",
   },
   {
@@ -98,9 +98,9 @@ const PAGES = [
     key: "contact",
     type: "ContactPage",
     crumb: "Kontakt",
-    title: "Kontakt – Livio Krummenacher, Filmemacher aus Luzern | itsmp4",
+    title: "Kontakt – Livio Krummenacher, Videograf aus Luzern | itsmp4",
     description:
-      "Kontakt zu Livio Krummenacher, Filmemacher aus Luzern: hello@itsmp4.ch",
+      "Kontakt zu Livio Krummenacher, Videograf aus Luzern: hello@itsmp4.ch",
   },
   {
     file: "404.html",
@@ -172,7 +172,7 @@ const person = {
   alternateName: SITE.name,
   jobTitle: SITE.jobTitle,
   description:
-    "Filmemacher und Videograf aus Luzern. Events, Musik und eigene Projekte.",
+    "Videograf aus Luzern. Events, Musik und eigene Projekte.",
   image: abs("assets/img/portrait.jpg"),
   url: pageUrl("/ueber-mich.html"),
   email: SITE.mail,
@@ -282,7 +282,7 @@ function header(key, pre) {
   const link = ([href, label, k]) =>
     `<a href="${pre}${href}"${k === key ? ' aria-current="page"' : ""}><span class="roll" data-text="${label}">${label}</span></a>`;
   return `  <header class="site-header">
-    <p class="nav-tag">${SITE.person}<span> · Filmemacher</span></p>
+    <p class="nav-tag">${SITE.person}<span> · Videograf</span></p>
     <a class="brand" href="${home}" aria-label="itsmp4 – zur Startseite">
       <img src="${pre}assets/img/itsmp4-logo.png" alt="itsmp4" width="1326" height="228">
     </a>
@@ -312,7 +312,7 @@ ${NAV.map(([href, label]) => `          <a href="${pre}${href}">${label}</a>`).j
         </div>
         <div>
           <span class="foot-label">${SITE.person}</span>
-          <span>Filmemacher</span>
+          <span>Videograf</span>
           <span>${SITE.city}, Schweiz</span>
         </div>
         <div>
@@ -569,7 +569,7 @@ write(
 > ${SITE.description}
 
 ## Auf einen Blick
-- Name: ${SITE.person}, unabhängiger Filmemacher und Videograf
+- Name: ${SITE.person}, Videograf
 - Portfolio: ${SITE.name}
 - Fokus: Events, Musik und eigene Projekte
 - Arbeitsweise: Kamera, Schnitt und Farbkorrektur selbst

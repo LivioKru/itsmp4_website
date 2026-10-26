@@ -32,6 +32,20 @@
     foot.querySelector("[data-top]").addEventListener("click", () => scrollTo({ top: 0, behavior: "smooth" }));
   }
 
+  /* ---------- Startseite: Hintergrundvideo sicher starten ---------- */
+  // Manche Handys blockieren Autoplay beim Laden – dann stumm anstossen
+  // und spätestens bei der ersten Berührung nochmals versuchen.
+  const heroVideo = document.querySelector(".hero-video");
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.defaultMuted = true;
+    const play = () => { if (heroVideo.paused) heroVideo.play().catch(() => {}); };
+    play();
+    heroVideo.addEventListener("canplay", play, { once: true });
+    ["touchstart", "pointerdown", "keydown"].forEach((ev) => addEventListener(ev, play, { once: true, passive: true }));
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) play(); });
+  }
+
   /* ---------- Mobile-Menü ---------- */
   const menuBtn = document.querySelector(".menu-btn");
   menuBtn.addEventListener("click", () => {

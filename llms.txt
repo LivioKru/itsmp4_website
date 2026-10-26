@@ -1,9 +1,9 @@
 # itsmp4 – Filmportfolio von Livio Krummenacher
 
-> itsmp4 ist das Portfolio von Livio Krummenacher, Filmemacher und Videograf aus Luzern. Events, Musik und eigene Projekte.
+> itsmp4 ist das Portfolio von Livio Krummenacher, Videograf aus Luzern. Events, Musik und eigene Projekte.
 
 ## Auf einen Blick
-- Name: Livio Krummenacher, unabhängiger Filmemacher und Videograf
+- Name: Livio Krummenacher, Videograf
 - Portfolio: itsmp4
 - Fokus: Events, Musik und eigene Projekte
 - Arbeitsweise: Kamera, Schnitt und Farbkorrektur selbst
