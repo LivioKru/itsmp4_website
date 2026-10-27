@@ -19,6 +19,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -51,7 +52,6 @@ const SITE = {
    -------------------------------------------------------------------------- */
 const REDIRECTS = {
   "videograf-luzern.html": "ueber-mich",
-  "eventvideo-luzern.html": "referenzen",
   "imagefilm-luzern.html": "referenzen",
   "social-media-video-luzern.html": "referenzen",
   "musikvideo-luzern.html": "referenzen",
@@ -74,7 +74,7 @@ const PAGES = [
     type: "WebPage",
     title: "itsmp4 – Livio Krummenacher, Videograf aus Luzern",
     description:
-      "Filme von Livio Krummenacher, Videograf aus Luzern. Events, Musik und eigene Projekte.",
+      "Filme von Livio Krummenacher, Videograf aus Luzern: Eventvideos, Aftermovies, Musik und eigene Projekte aus Luzern und der Zentralschweiz.",
     preload: "assets/img/startseite-reel.jpg",
   },
   {
@@ -85,7 +85,20 @@ const PAGES = [
     crumb: "Selected Work",
     title: "Selected Work – Filme von Livio Krummenacher | itsmp4",
     description:
-      "Alle Filme von Livio Krummenacher aus Luzern: Events, Musik und eigene Projekte.",
+      "Eventvideos, Aftermovies, Musik und eigene Projekte: alle Filme von Livio Krummenacher, Videograf aus Luzern.",
+  },
+  {
+    file: "eventvideo-luzern.html",
+    url: "/eventvideo-luzern",
+    key: "events",
+    type: "WebPage",
+    crumb: "Eventvideos & Aftermovies",
+    title: "Eventvideograf Luzern – Eventvideos & Aftermovies | itsmp4",
+    description:
+      "Eventvideos und Aftermovies aus Luzern und der Zentralschweiz: Livio Krummenacher filmt Partys, Clubnächte und Shows – quer oder im Hochformat für Instagram und TikTok.",
+    image: "assets/img/orofanie.jpg",
+    ogVideo: "assets/video/orofanie.mp4",
+    feature: "orofanie", // Film, der auf der Seite gross läuft
   },
   {
     file: "ueber-mich.html",
@@ -119,6 +132,9 @@ const PAGES = [
   },
 ];
 
+// Nur im Footer (Hauptnavigation bleibt bei drei Punkten)
+const FOOT_LINKS = [["eventvideo-luzern", "Eventvideos"]];
+
 const NAV = [
   ["referenzen", "Work", "work"],
   ["ueber-mich", "About", "about"],
@@ -137,6 +153,21 @@ const read = (f) => fs.readFileSync(path.join(ROOT, f), "utf8");
 const write = (f, s) => {
   fs.mkdirSync(path.dirname(path.join(ROOT, f)), { recursive: true });
   fs.writeFileSync(path.join(ROOT, f), s);
+};
+// "2026-08-22" -> "2026-08-22T00:00:00+02:00" (Schweizer Zeit, Google will eine Zeitzone)
+const withZone = (d) => {
+  const off = new Date(`${d}T12:00:00Z`).toLocaleString("en-US", { timeZone: "Europe/Zurich", timeZoneName: "shortOffset" }).split("GMT+")[1]; // "1" oder "2"
+  return `${d}T00:00:00+0${off}:00`;
+};
+// Letzte echte Änderung einer Seite (aus git), damit «lastmod» in der Sitemap
+// nicht bei jedem Build auf heute springt. Geänderte, noch nicht committete Datei -> heute.
+const lastmod = (f) => {
+  try {
+    if (execFileSync("git", ["status", "--porcelain", "--", f], { cwd: ROOT, encoding: "utf8" }).trim()) return today;
+    return execFileSync("git", ["log", "-1", "--format=%cs", "--", f], { cwd: ROOT, encoding: "utf8" }).trim() || today;
+  } catch {
+    return today;
+  }
 };
 const short = (s, n = 155) => (s.length <= n ? s : s.slice(0, s.lastIndexOf(" ", n - 1)) + " …");
 
@@ -182,8 +213,9 @@ const person = {
   url: pageUrl("/ueber-mich"),
   email: SITE.mail,
   homeLocation: { "@type": "Place", name: "Luzern, Schweiz" },
+  address: { "@type": "PostalAddress", addressLocality: SITE.city, addressRegion: SITE.region, addressCountry: "CH" },
   knowsLanguage: ["de", "de-CH"],
-  knowsAbout: ["Film", "Videografie", "Eventfilm", "Musikvideo", "Kamera", "Videoschnitt", "Color Grading", "Visual Storytelling"],
+  knowsAbout: ["Film", "Videografie", "Eventfilm", "Eventvideo", "Aftermovie", "Musikvideo", "Kamera", "Videoschnitt", "Color Grading", "Visual Storytelling"],
   sameAs: [SITE.instagram],
 };
 
@@ -206,16 +238,20 @@ function breadcrumb(items) {
   };
 }
 
+// Untertitel + Text, ohne den Untertitel doppelt, wenn der Text gleich beginnt
+const descOf = (p) => (p.text[0].startsWith(p.subtitle) ? p.text : [p.subtitle, ...p.text]).join(" ");
+
 function videoObject(p) {
   return {
     "@type": "VideoObject",
     "@id": pageUrl(projectUrl(p)),
     name: `${p.title} – ${kindOf(p)} von ${SITE.person}`,
-    description: [p.subtitle, ...p.text].join(" "),
+    description: descOf(p),
     thumbnailUrl: [abs(p.poster)],
-    uploadDate: p.date,
+    uploadDate: withZone(p.date),
     duration: `PT${p.seconds}S`,
     contentUrl: abs(p.video),
+    encodingFormat: "video/mp4",
     url: pageUrl(projectUrl(p)),
     inLanguage: "de-CH",
     creator: { "@id": ID.person },
@@ -277,6 +313,7 @@ function head(page, pre, extraLd = []) {
   <link rel="apple-touch-icon" href="${pre}apple-touch-icon.png">
   <link rel="preload" href="${pre}assets/fonts/funnel-display.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="${pre}assets/fonts/funnel-sans.woff2" as="font" type="font/woff2" crossorigin>
+  <script>document.documentElement.classList.add("js")</script>
   <link rel="stylesheet" href="${pre}assets/css/style.css">${page.preload ? `
   <link rel="preload" as="image" href="${pre}${page.preload}" fetchpriority="high">` : ""}
   ${jsonld(page, extraLd)}`;
@@ -313,7 +350,7 @@ function footer(pre) {
       <div class="foot-cols">
         <div>
           <span class="foot-label">Seiten</span>
-${NAV.map(([href, label]) => `          <a href="${pre}${href}">${label}</a>`).join("\n")}
+${[...NAV, ...FOOT_LINKS].map(([href, label]) => `          <a href="${pre}${href}">${label}</a>`).join("\n")}
         </div>
         <div>
           <span class="foot-label">${SITE.person}</span>
@@ -357,6 +394,23 @@ function workItem(p) {
             <span class="wi-text">
               <span class="wi-title">${esc(p.title)}</span>
               <span class="wi-meta">${esc(meta)}</span>
+            </span>
+          </a>
+        </li>`;
+}
+
+// Leistungsseite: weitere Eventfilme, Klick öffnet den Film auf der Work-Seite
+function eventItem(p) {
+  const crop = p.crop ? ` style="object-position: ${esc(p.crop)}"` : "";
+  return `        <li class="work-item" data-format="${p.format}">
+          <a href="referenzen#${p.slug}">
+            <span class="wi-media">
+              <img src="${p.poster}" alt="${esc(altOf(p))}" loading="lazy"${crop}>
+              <span class="wi-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l15 8-15 8z"/></svg></span>
+            </span>
+            <span class="wi-text">
+              <span class="wi-title">${esc(p.title)}</span>
+              <span class="wi-meta">${esc(`${p.category} · ${monthYear(p.date)}`)}</span>
             </span>
           </a>
         </li>`;
@@ -413,6 +467,8 @@ function redirectPage(to, canonical = "/" + to) {
    -------------------------------------------------------------------------- */
 const LEGAL = {
   owner: SITE.person,
+  // Postadresse (Strasse, PLZ Ort) – nötig, sobald du Aufträge annimmst
+  address: "",
   host: "GitHub Pages (GitHub Inc., USA)",
 };
 
@@ -431,10 +487,10 @@ function legalPage(kind) {
     ? `    <h1 class="title">Impressum</h1>
     <div class="legal">
       <h2>Verantwortlich für diese Website</h2>
-      <p>${esc(LEGAL.owner)}<br>Schweiz</p>
+      <p>${esc(LEGAL.owner)}<br>${LEGAL.address ? `${esc(LEGAL.address)}<br>` : ""}Schweiz</p>
       <p>E-Mail: <a href="mailto:${SITE.mail}">${SITE.mail}</a></p>
       <h2>Über diese Website</h2>
-      <p>${SITE.name} ist das persönliche, nicht kommerzielle Filmportfolio von ${SITE.person}.</p>
+      <p>${SITE.name} ist das Filmportfolio von ${SITE.person}, Videograf aus ${SITE.city}.</p>
       <h2>Haftung</h2>
       <p>Die Inhalte dieser Website wurden sorgfältig erstellt. Für Richtigkeit, Vollständigkeit und Aktualität wird keine Gewähr übernommen. Für Inhalte verlinkter externer Seiten sind ausschliesslich deren Betreiber verantwortlich.</p>
       <h2>Urheberrecht</h2>
@@ -442,7 +498,7 @@ function legalPage(kind) {
     </div>`
     : `    <h1 class="title">Datenschutz</h1>
     <div class="legal">
-      <p>Diese Website ist das persönliche Filmportfolio von ${SITE.person} (${SITE.name}). Es werden so wenige Daten wie möglich bearbeitet. Massgebend ist das Schweizer Datenschutzgesetz (DSG).</p>
+      <p>Diese Website ist das Filmportfolio von ${SITE.person} (${SITE.name}). Es werden so wenige Daten wie möglich bearbeitet. Massgebend ist das Schweizer Datenschutzgesetz (DSG).</p>
       <h2>Verantwortlich</h2>
       <p>${esc(LEGAL.owner)}, <a href="mailto:${SITE.mail}">${SITE.mail}</a></p>
       <h2>Keine Cookies, kein Tracking</h2>
@@ -478,6 +534,26 @@ write("datenschutz.html", legalPage("datenschutz"));
 for (const page of PAGES) {
   let html = read(page.file);
   const extra = [];
+  if (page.key === "events") {
+    const film = REAL.find((p) => p.slug === page.feature);
+    extra.push(
+      {
+        "@type": "Service",
+        "@id": pageUrl(page.url) + "#service",
+        name: "Eventvideos & Aftermovies",
+        serviceType: ["Eventvideo", "Aftermovie", "Videoproduktion"],
+        description: page.description,
+        provider: { "@id": ID.person },
+        areaServed: [
+          { "@type": "City", name: "Luzern" },
+          { "@type": "AdministrativeArea", name: "Zentralschweiz" },
+        ],
+        url: pageUrl(page.url),
+      },
+      // Der Film läuft hier als Hauptinhalt -> Google kann ihn dieser Seite zuordnen
+      { ...videoObject(film), "@id": pageUrl(page.url) + "#video", url: pageUrl(page.url) }
+    );
+  }
   if (page.key === "work") {
     extra.push({
       "@type": "ItemList",
@@ -492,6 +568,10 @@ for (const page of PAGES) {
   html = inject(html, "header", header(page.key, pre), page.file);
   if (html.includes("<!-- build:footer -->")) html = inject(html, "footer", footer(pre), page.file);
 
+  if (page.key === "events") {
+    const others = REAL.filter((p) => p.category === "Event" && p.slug !== page.feature);
+    html = inject(html, "grid", others.map(eventItem).join("\n"), page.file);
+  }
   if (page.key === "work") {
     const cats = ["Alle", ...new Set(PROJECTS.map((p) => p.category))];
     html = inject(html, "filters", cats.map((c, i) => `      <button aria-pressed="${i === 0}" data-cat="${esc(c)}">${esc(c)}</button>`).join("\n"), page.file);
@@ -503,8 +583,9 @@ for (const page of PAGES) {
 // 3) Sitemap (mit Video-Angaben für die Google-Videosuche)
 const urls = PAGES.filter((p) => !p.noindex).map((p) => ({
   loc: pageUrl(p.url),
+  lastmod: lastmod(p.file),
   priority: p.key === "home" ? "1.0" : "0.8",
-  films: p.key === "work" ? REAL : [],
+  films: p.key === "work" ? REAL : p.feature ? REAL.filter((f) => f.slug === p.feature) : [],
 }));
 write(
   "sitemap.xml",
@@ -514,7 +595,7 @@ ${urls
   .map(
     (u) => `  <url>
     <loc>${u.loc}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${u.lastmod}</lastmod>
     <priority>${u.priority}</priority>${u.films
       .map(
         (f) => `
@@ -522,10 +603,10 @@ ${urls
     <video:video>
       <video:thumbnail_loc>${abs(f.poster)}</video:thumbnail_loc>
       <video:title>${esc(f.title)} – ${kindOf(f)} von ${SITE.person}</video:title>
-      <video:description>${esc(short([f.subtitle, ...f.text].join(" "), 1000))}</video:description>
+      <video:description>${esc(short(descOf(f), 1000))}</video:description>
       <video:content_loc>${abs(f.video)}</video:content_loc>
       <video:duration>${f.seconds}</video:duration>
-      <video:publication_date>${f.date}</video:publication_date>
+      <video:publication_date>${withZone(f.date)}</video:publication_date>
     </video:video>`
       )
       .join("")}
@@ -583,11 +664,12 @@ write(
 - Basis: ${SITE.city}, Zentralschweiz
 - Kontakt: ${SITE.mail} · Instagram ${SITE.instagramHandle} (${SITE.instagram})
 - Website: ${SITE.url}/
-- Hinweis: ${SITE.name} ist ein persönliches Filmportfolio, kein kommerzielles Angebot.
+- Angebot: Eventvideos und Aftermovies in ${SITE.city} und der Zentralschweiz (${pageUrl("/eventvideo-luzern")})
 
 ## Seiten
 - [Startseite](${SITE.url}/)
 - [Selected Work](${pageUrl("/referenzen")})
+- [Eventvideos & Aftermovies](${pageUrl("/eventvideo-luzern")})
 - [Über mich – ${SITE.person}](${pageUrl("/ueber-mich")})
 - [Kontakt](${pageUrl("/kontakt")})
 

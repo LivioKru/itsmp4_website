@@ -28,13 +28,14 @@ Bereiche zwischen `<!-- build:… -->` und `<!-- /build:… -->` nicht von Hand
 
 | Datei | Inhalt |
 |---|---|
-| `index.html` | Startseite – Hintergrundvideo, Logo, «Play the work» (kein Scrollen) |
+| `index.html` | Startseite – Hintergrundvideo, Logo, «Play the work», darunter kurzer Text und Footer |
 | `referenzen.html` | WORK – Raster mit allen Filmen (Vorschau beim Überfahren), Filme öffnen sich im Pop-up |
+| `eventvideo-luzern.html` | Leistungsseite Eventvideos & Aftermovies – Orofani läuft dort als Hauptfilm (`feature` in `PAGES`) |
 | `ueber-mich.html` | ABOUT |
 | `kontakt.html` | CONTACT – «Let’s connect.», E-Mail und Instagram |
 | `impressum.html`, `datenschutz.html` | automatisch erzeugt – **Adresse in `LEGAL` (tools/build.mjs) ausfüllen** |
 | `404.html` | Fehlerseite |
-| `videograf-luzern.html`, `eventvideo-luzern.html` usw. | alte Leistungsseiten – leiten nur noch weiter (`REDIRECTS` in `tools/build.mjs`) |
+| `videograf-luzern.html`, `musikvideo-luzern.html` usw. | alte Leistungsseiten – leiten nur noch weiter (`REDIRECTS` in `tools/build.mjs`) |
 | `projekte/<name>.html` | alte Projektseiten – leiten auf `referenzen.html#<name>` weiter und öffnen dort den Film |
 
 Die Adressen `referenzen.html`, `ueber-mich.html` und `kontakt.html` bleiben bewusst gleich,
@@ -70,7 +71,7 @@ avconvert -s input.mov -o assets/video/name.mp4 -p Preset1920x1080
 - **Farben/Schriften**: oben in `assets/css/style.css` (`:root`)
 
 ## Vor dem Hochladen
-- Impressum: Adresse in `LEGAL` (tools/build.mjs) eintragen und neu bauen
+- Impressum: Postadresse in `LEGAL.address` (tools/build.mjs) eintragen und neu bauen – nötig, weil die Website jetzt Eventvideos anbietet
 - `livio.html` und `livio_files/` löschen (gespeicherte fremde Webseite)
 - Ordner `videos/` und `tools/` müssen nicht online
 

@@ -2,12 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://itsmp4.ch/</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://itsmp4.ch/referenzen</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
     <image:image><image:loc>https://itsmp4.ch/assets/img/timeless-tunes-frizzli.jpg</image:loc></image:image>
     <video:video>
@@ -16,16 +16,16 @@
       <video:description>Noch ein Abend mit Timeless Tunes. DJs, Drinks und eine volle Tanzfläche: Eventfilm im Hochformat von einem weiteren Timeless-Tunes-Abend, zusammen mit Frizzli.</video:description>
       <video:content_loc>https://itsmp4.ch/assets/video/timeless-tunes-frizzli.mp4</video:content_loc>
       <video:duration>39</video:duration>
-      <video:publication_date>2026-10-17</video:publication_date>
+      <video:publication_date>2026-10-17T00:00:00+02:00</video:publication_date>
     </video:video>
     <image:image><image:loc>https://itsmp4.ch/assets/img/orofanie.jpg</image:loc></image:image>
     <video:video>
       <video:thumbnail_loc>https://itsmp4.ch/assets/img/orofanie.jpg</video:thumbnail_loc>
       <video:title>Orofani – Eventfilm von Livio Krummenacher</video:title>
-      <video:description>Fashion Show auf einem Schiff. Fashion Show auf einem Schiff. Ich habe die Show mit zwei Kameras begleitet, direkt am Laufsteg und zwischen den Gästen. Daraus ist ein kurzer Eventfilm entstanden, der den Abend in unter einer Minute zeigt.</video:description>
+      <video:description>Fashion Show auf einem Schiff. Ich habe die Show mit zwei Kameras begleitet, direkt am Laufsteg und zwischen den Gästen. Daraus ist ein kurzer Eventfilm entstanden, der den Abend in unter einer Minute zeigt.</video:description>
       <video:content_loc>https://itsmp4.ch/assets/video/orofanie.mp4</video:content_loc>
       <video:duration>39</video:duration>
-      <video:publication_date>2026-08-22</video:publication_date>
+      <video:publication_date>2026-08-22T00:00:00+02:00</video:publication_date>
     </video:video>
     <image:image><image:loc>https://itsmp4.ch/assets/img/timeless-tunes.jpg</image:loc></image:image>
     <video:video>
@@ -34,16 +34,16 @@
       <video:description>DJs, Nebel und ein voller Dancefloor. DJs, Nebel und ein voller Dancefloor: Für Timeless Tunes habe ich ein Eventvideo im Hochformat gedreht, gemacht für Instagram und TikTok. Gefilmt mitten aus der Menge, nah an den DJs und am Publikum, und im Takt der Musik geschnitten. So wirkt der Clip auch auf dem Handy wie ein Abend, bei dem man dabei sein wollte.</video:description>
       <video:content_loc>https://itsmp4.ch/assets/video/timeless-tunes.mp4</video:content_loc>
       <video:duration>38</video:duration>
-      <video:publication_date>2026-09-26</video:publication_date>
+      <video:publication_date>2026-09-26T00:00:00+02:00</video:publication_date>
     </video:video>
     <image:image><image:loc>https://itsmp4.ch/assets/img/mar-de-pins.jpg</image:loc></image:image>
     <video:video>
       <video:thumbnail_loc>https://itsmp4.ch/assets/img/mar-de-pins.jpg</video:thumbnail_loc>
       <video:title>Mar de Pins – Film von Livio Krummenacher</video:title>
-      <video:description>Pinienwald, Felsen und Wellen an der Küste von Mallorca. Pinienwald, Felsen und Wellen an der Küste von Mallorca. Ein eigenes Projekt ohne Kunde und ohne Briefing, nur Kamera, Wetter und Meer. Gedreht an einem grauen Tag mit viel Wind. Genau das hat die Stimmung gemacht.</video:description>
+      <video:description>Pinienwald, Felsen und Wellen an der Küste von Mallorca. Ein eigenes Projekt ohne Kunde und ohne Briefing, nur Kamera, Wetter und Meer. Gedreht an einem grauen Tag mit viel Wind. Genau das hat die Stimmung gemacht.</video:description>
       <video:content_loc>https://itsmp4.ch/assets/video/mar-de-pins.mp4</video:content_loc>
       <video:duration>13</video:duration>
-      <video:publication_date>2026-10-05</video:publication_date>
+      <video:publication_date>2026-10-05T00:00:00+02:00</video:publication_date>
     </video:video>
     <image:image><image:loc>https://itsmp4.ch/assets/img/arcteryx.jpg</image:loc></image:image>
     <video:video>
@@ -52,7 +52,7 @@
       <video:description>Spec Ad: Ski, Bike und Berge. Ein freier Werbefilm (Spec Ad) für Arc'teryx. Ein eigenes Projekt, nicht im Auftrag der Marke entstanden. Skifahren im Frühlingsschnee, Biken über Wiesen und durch den Wald. Gedreht in den Schweizer Bergen, geschnitten und gegradet von Livio Krummenacher.</video:description>
       <video:content_loc>https://itsmp4.ch/assets/video/arcteryx.mp4</video:content_loc>
       <video:duration>50</video:duration>
-      <video:publication_date>2026-04-07</video:publication_date>
+      <video:publication_date>2026-04-07T00:00:00+02:00</video:publication_date>
     </video:video>
     <image:image><image:loc>https://itsmp4.ch/assets/img/maison82-collective.jpg</image:loc></image:image>
     <video:video>
@@ -61,17 +61,31 @@
       <video:description>DJ-Session zwischen weissen Wänden. Ein DJ-Set von Cator in einem leeren Galerieraum, zwischen Holzkisten und weissen Wänden. Gefilmt mit mehreren Kameras und mit eigenem Ton aufgenommen.</video:description>
       <video:content_loc>https://itsmp4.ch/assets/video/maison82-collective.mp4</video:content_loc>
       <video:duration>23</video:duration>
-      <video:publication_date>2026-07-02</video:publication_date>
+      <video:publication_date>2026-07-02T00:00:00+02:00</video:publication_date>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://itsmp4.ch/eventvideo-luzern</loc>
+    <lastmod>2026-10-27</lastmod>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://itsmp4.ch/assets/img/orofanie.jpg</image:loc></image:image>
+    <video:video>
+      <video:thumbnail_loc>https://itsmp4.ch/assets/img/orofanie.jpg</video:thumbnail_loc>
+      <video:title>Orofani – Eventfilm von Livio Krummenacher</video:title>
+      <video:description>Fashion Show auf einem Schiff. Ich habe die Show mit zwei Kameras begleitet, direkt am Laufsteg und zwischen den Gästen. Daraus ist ein kurzer Eventfilm entstanden, der den Abend in unter einer Minute zeigt.</video:description>
+      <video:content_loc>https://itsmp4.ch/assets/video/orofanie.mp4</video:content_loc>
+      <video:duration>39</video:duration>
+      <video:publication_date>2026-08-22T00:00:00+02:00</video:publication_date>
     </video:video>
   </url>
   <url>
     <loc>https://itsmp4.ch/ueber-mich</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://itsmp4.ch/kontakt</loc>
-    <lastmod>2026-10-26</lastmod>
+    <lastmod>2026-10-27</lastmod>
     <priority>0.8</priority>
   </url>
 </urlset>
