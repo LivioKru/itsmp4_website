@@ -22,6 +22,8 @@
    date        Veröffentlichungsdatum (JJJJ-MM-TT) – wird als «Monat Jahr» angezeigt
    seconds     Länge des Videos in Sekunden
    location    optional: Drehort (z.B. "Luzern")
+   link        optional: Website oder Instagram des Kunden – im Pop-up verlinkt
+   linkLabel   optional: Linktext dazu, z.B. "@timelesstunes.ch"
    placeholder true = Platzhalter-Projekt (wird markiert und nicht von Google
                indexiert). Löschen, wenn echt.
 
@@ -36,6 +38,8 @@ window.PROJECTS = [
     seconds: 39,
     title: "Timeless Tunes × Frizzli",
     client: "Timeless Tunes",
+    link: "https://www.instagram.com/timelesstunes.ch/",
+    linkLabel: "@timelesstunes.ch",
     year: 2026,
     category: "Event",
     format: "9:16",
@@ -73,6 +77,8 @@ window.PROJECTS = [
     seconds: 38,
     title: "Timeless Tunes",
     client: "Timeless Tunes",
+    link: "https://www.instagram.com/timelesstunes.ch/",
+    linkLabel: "@timelesstunes.ch",
     year: 2026,
     category: "Event",
     format: "9:16",

@@ -68,7 +68,7 @@
     <ol class="work-grid" data-grid aria-label="Filme">
     <!-- build:grid -->
         <li class="work-item" id="timeless-tunes-frizzli" data-format="9:16" data-cat="Event">
-          <a href="#timeless-tunes-frizzli" data-film="assets/video/timeless-tunes-frizzli.mp4" data-poster="assets/img/timeless-tunes-frizzli.jpg" data-title="Timeless Tunes × Frizzli" data-meta="Event · Oktober 2026">
+          <a href="#timeless-tunes-frizzli" data-film="assets/video/timeless-tunes-frizzli.mp4" data-poster="assets/img/timeless-tunes-frizzli.jpg" data-title="Timeless Tunes × Frizzli" data-meta="Event · Oktober 2026" data-link="https://www.instagram.com/timelesstunes.ch/" data-link-label="@timelesstunes.ch">
             <span class="wi-media">
               <img src="assets/img/timeless-tunes-frizzli.jpg" alt="Timeless Tunes × Frizzli – Eventfilm von Livio Krummenacher" loading="lazy">
               <video muted loop playsinline preload="none" data-src="assets/video/preview/timeless-tunes-frizzli.mp4" aria-hidden="true"></video>
@@ -94,7 +94,7 @@
           </a>
         </li>
         <li class="work-item" id="timeless-tunes" data-format="9:16" data-cat="Event">
-          <a href="#timeless-tunes" data-film="assets/video/timeless-tunes.mp4" data-poster="assets/img/timeless-tunes.jpg" data-title="Timeless Tunes" data-meta="Event · September 2026">
+          <a href="#timeless-tunes" data-film="assets/video/timeless-tunes.mp4" data-poster="assets/img/timeless-tunes.jpg" data-title="Timeless Tunes" data-meta="Event · September 2026" data-link="https://www.instagram.com/timelesstunes.ch/" data-link-label="@timelesstunes.ch">
             <span class="wi-media">
               <img src="assets/img/timeless-tunes.jpg" alt="Timeless Tunes – Eventfilm von Livio Krummenacher" loading="lazy">
               <video muted loop playsinline preload="none" data-src="assets/video/preview/timeless-tunes.mp4" aria-hidden="true"></video>
@@ -154,7 +154,7 @@
     <div class="film-bar">
       <div>
         <h2 class="film-title" id="film-title"></h2>
-        <p class="label" data-film-meta></p>
+        <p class="label"><span data-film-meta></span><span data-film-credit hidden> · <a class="inline-link" target="_blank" rel="noopener"></a></span></p>
       </div>
       <button class="film-close" data-film-close>Schliessen <span aria-hidden="true">✕</span></button>
     </div>
@@ -241,6 +241,11 @@
       const open = (a) => {
         dlg.querySelector(".film-title").textContent = a.dataset.title;
         dlg.querySelector("[data-film-meta]").textContent = a.dataset.meta;
+        // Kunde verlinken (Website/Instagram), falls in projects.js angegeben
+        const credit = dlg.querySelector("[data-film-credit]");
+        credit.hidden = !a.dataset.link;
+        credit.querySelector("a").href = a.dataset.link || "";
+        credit.querySelector("a").textContent = (a.dataset.linkLabel || "") + " ↗";
         dlg.dataset.format = a.closest(".work-item").dataset.format;
         list.querySelectorAll("video").forEach((v) => v.pause());
         video.poster = a.dataset.poster;
