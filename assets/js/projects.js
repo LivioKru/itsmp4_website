@@ -22,8 +22,8 @@
    date        Veröffentlichungsdatum (JJJJ-MM-TT) – wird als «Monat Jahr» angezeigt
    seconds     Länge des Videos in Sekunden
    location    optional: Drehort (z.B. "Luzern")
-   link        optional: Website oder Instagram des Kunden – im Pop-up verlinkt
-   linkLabel   optional: Linktext dazu, z.B. "@timelesstunes.ch"
+   links       optional: Website/Instagram der Beteiligten – im Pop-up verlinkt,
+               z.B. [{ label: "@timelesstunes.ch", url: "https://…" }]
    placeholder true = Platzhalter-Projekt (wird markiert und nicht von Google
                indexiert). Löschen, wenn echt.
 
@@ -38,8 +38,10 @@ window.PROJECTS = [
     seconds: 39,
     title: "Timeless Tunes × Frizzli",
     client: "Timeless Tunes",
-    link: "https://www.instagram.com/timelesstunes.ch/",
-    linkLabel: "@timelesstunes.ch",
+    links: [
+      { label: "@timelesstunes.ch", url: "https://www.instagram.com/timelesstunes.ch/" },
+      { label: "frizzli.ch", url: "https://frizzli.ch/" },
+    ],
     year: 2026,
     category: "Event",
     format: "9:16",
@@ -58,6 +60,7 @@ window.PROJECTS = [
     location: "Vierwaldstättersee, Luzern",
     title: "Orofani",
     client: "Orofani",
+    links: [{ label: "@orofaniofficial", url: "https://www.instagram.com/orofaniofficial/" }],
     year: 2026,
     category: "Event",
     format: "16:9",
@@ -77,8 +80,7 @@ window.PROJECTS = [
     seconds: 38,
     title: "Timeless Tunes",
     client: "Timeless Tunes",
-    link: "https://www.instagram.com/timelesstunes.ch/",
-    linkLabel: "@timelesstunes.ch",
+    links: [{ label: "@timelesstunes.ch", url: "https://www.instagram.com/timelesstunes.ch/" }],
     year: 2026,
     category: "Event",
     format: "9:16",
@@ -134,8 +136,9 @@ window.PROJECTS = [
     slug: "maison82-collective",
     date: "2026-07-02",
     seconds: 23,
-    title: "Cator",
-    client: "Cator",
+    title: "Castor",
+    client: "Castor",
+    links: [{ label: "@castor.b2b", url: "https://www.instagram.com/castor.b2b/" }],
     year: 2026,
     category: "Musik",
     format: "16:9",
@@ -144,7 +147,7 @@ window.PROJECTS = [
     poster: "assets/img/maison82-collective.jpg",
     subtitle: "DJ-Session zwischen weissen Wänden.",
     text: [
-      "Ein DJ-Set von Cator in einem leeren Galerieraum, zwischen Holzkisten und weissen Wänden.",
+      "Ein DJ-Set von Castor in einem leeren Galerieraum, zwischen Holzkisten und weissen Wänden.",
       "Gefilmt mit mehreren Kameras und mit eigenem Ton aufgenommen.",
     ],
   },

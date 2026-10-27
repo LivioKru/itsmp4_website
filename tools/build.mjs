@@ -385,7 +385,7 @@ function workItem(p) {
   // Ausschnitt in der Kachel, z.B. "50% 30%" (Standard: Mitte)
   const crop = p.crop ? ` style="object-position: ${esc(p.crop)}"` : "";
   return `        <li class="work-item" id="${p.slug}" data-format="${p.format}" data-cat="${esc(p.category)}">
-          <a href="#${p.slug}" data-film="${p.video}" data-poster="${p.poster}" data-title="${esc(p.title)}" data-meta="${esc(meta)}"${p.link ? ` data-link="${esc(p.link)}" data-link-label="${esc(p.linkLabel || p.client)}"` : ""}>
+          <a href="#${p.slug}" data-film="${p.video}" data-poster="${p.poster}" data-title="${esc(p.title)}" data-meta="${esc(meta)}"${p.links ? ` data-links="${esc(JSON.stringify(p.links))}"` : ""}>
             <span class="wi-media">
               <img src="${p.poster}" alt="${esc(altOf(p))}" loading="lazy"${crop}>
               <video muted loop playsinline preload="none" data-src="${p.preview || p.video}" aria-hidden="true"${crop}></video>
