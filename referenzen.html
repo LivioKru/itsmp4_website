@@ -239,7 +239,8 @@
       const dlg = document.querySelector("[data-film-dialog]");
       const video = dlg.querySelector("video");
       const open = (a) => {
-        dlg.querySelector(".film-title").textContent = a.dataset.title;
+        // Titel samt verlinkten Namen aus der Kachel übernehmen
+        dlg.querySelector(".film-title").innerHTML = a.closest(".work-item").querySelector(".wi-title").innerHTML;
         dlg.querySelector("[data-film-meta]").textContent = a.dataset.meta;
         dlg.dataset.format = a.closest(".work-item").dataset.format;
         list.querySelectorAll("video").forEach((v) => v.pause());
