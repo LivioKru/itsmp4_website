@@ -22,8 +22,8 @@
    date        Veröffentlichungsdatum (JJJJ-MM-TT) – wird als «Monat Jahr» angezeigt
    seconds     Länge des Videos in Sekunden
    location    optional: Drehort (z.B. "Luzern")
-   links       optional: Website/Instagram der Beteiligten – im Pop-up verlinkt,
-               z.B. [{ label: "@timelesstunes.ch", url: "https://…" }]
+   links       optional: Wörter im Titel, die auf Website/Instagram verlinken,
+               z.B. [{ text: "Frizzli", url: "https://frizzli.ch/" }]
    placeholder true = Platzhalter-Projekt (wird markiert und nicht von Google
                indexiert). Löschen, wenn echt.
 
@@ -39,8 +39,8 @@ window.PROJECTS = [
     title: "Timeless Tunes × Frizzli",
     client: "Timeless Tunes",
     links: [
-      { label: "@timelesstunes.ch", url: "https://www.instagram.com/timelesstunes.ch/" },
-      { label: "frizzli.ch", url: "https://frizzli.ch/" },
+      { text: "Timeless Tunes", url: "https://www.instagram.com/timelesstunes.ch/" },
+      { text: "Frizzli", url: "https://frizzli.ch/" },
     ],
     year: 2026,
     category: "Event",
@@ -60,7 +60,7 @@ window.PROJECTS = [
     location: "Vierwaldstättersee, Luzern",
     title: "Orofani",
     client: "Orofani",
-    links: [{ label: "@orofaniofficial", url: "https://www.instagram.com/orofaniofficial/" }],
+    links: [{ text: "Orofani", url: "https://www.instagram.com/orofaniofficial/" }],
     year: 2026,
     category: "Event",
     format: "16:9",
@@ -80,7 +80,7 @@ window.PROJECTS = [
     seconds: 38,
     title: "Timeless Tunes",
     client: "Timeless Tunes",
-    links: [{ label: "@timelesstunes.ch", url: "https://www.instagram.com/timelesstunes.ch/" }],
+    links: [{ text: "Timeless Tunes", url: "https://www.instagram.com/timelesstunes.ch/" }],
     year: 2026,
     category: "Event",
     format: "9:16",
@@ -138,7 +138,7 @@ window.PROJECTS = [
     seconds: 23,
     title: "Castor",
     client: "Castor",
-    links: [{ label: "@castor.b2b", url: "https://www.instagram.com/castor.b2b/" }],
+    links: [{ text: "Castor", url: "https://www.instagram.com/castor.b2b/" }],
     year: 2026,
     category: "Musik",
     format: "16:9",

@@ -385,25 +385,34 @@ function workItem(p) {
   // Ausschnitt in der Kachel, z.B. "50% 30%" (Standard: Mitte)
   const crop = p.crop ? ` style="object-position: ${esc(p.crop)}"` : "";
   return `        <li class="work-item" id="${p.slug}" data-format="${p.format}" data-cat="${esc(p.category)}">
-          <a href="#${p.slug}" data-film="${p.video}" data-poster="${p.poster}" data-title="${esc(p.title)}" data-meta="${esc(meta)}"${p.links ? ` data-links="${esc(JSON.stringify(p.links))}"` : ""}>
+          <a class="wi-open" href="#${p.slug}" data-film="${p.video}" data-poster="${p.poster}" data-title="${esc(p.title)}" data-meta="${esc(meta)}">
             <span class="wi-media">
               <img src="${p.poster}" alt="${esc(altOf(p))}" loading="lazy"${crop}>
               <video muted loop playsinline preload="none" data-src="${p.preview || p.video}" aria-hidden="true"${crop}></video>
               <span class="wi-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l15 8-15 8z"/></svg></span>
             </span>
-            <span class="wi-text">
-              <span class="wi-title">${esc(p.title)}</span>
-              <span class="wi-meta">${esc(meta)}</span>
-            </span>
           </a>
+          <span class="wi-text">
+            <span class="wi-title">${linkedTitle(p)}</span>
+            <span class="wi-meta">${esc(meta)}</span>
+          </span>
         </li>`;
+}
+
+// Titel mit verlinkten Namen, z.B. «Timeless Tunes × <a>Frizzli</a>»
+function linkedTitle(p) {
+  let html = esc(p.title);
+  for (const l of p.links || []) {
+    html = html.replace(esc(l.text), `<a class="wi-ext" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.text)}</a>`);
+  }
+  return html;
 }
 
 // Leistungsseite: weitere Eventfilme, Klick öffnet den Film auf der Work-Seite
 function eventItem(p) {
   const crop = p.crop ? ` style="object-position: ${esc(p.crop)}"` : "";
   return `        <li class="work-item" data-format="${p.format}">
-          <a href="referenzen#${p.slug}">
+          <a class="wi-open" href="referenzen#${p.slug}">
             <span class="wi-media">
               <img src="${p.poster}" alt="${esc(altOf(p))}" loading="lazy"${crop}>
               <span class="wi-play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6 4l15 8-15 8z"/></svg></span>
